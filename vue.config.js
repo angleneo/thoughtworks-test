@@ -20,7 +20,7 @@ module.exports = {
     disableHostCheck: true,
     proxy: {
       '/v1': { // 代理api
-        target: 'http://api.shudong.wang/v1', // 服务器api地址-
+        target: 'http://localhost:3001/v1', // 服务器api地址-
         changeOrigin: true, // 是否跨域
         ws: true, // proxy websockets
         pathRewrite: { // 重写路径
@@ -31,15 +31,7 @@ module.exports = {
   },
   chainWebpack: (config) => {
     config.optimization.minimize(true);
-    // config.optimization.splitChunks({
-    //   maxSize: 500,
-    //   chunks: 'all'
-    // })
     config.optimization.splitChunks({
-      // chunks: 'async',
-      // minSize: 300,
-
-      // minChunks: 1,
       cacheGroups: {
         vendors: {
           name: 'chunkstark-vendors',
@@ -57,12 +49,6 @@ module.exports = {
         }
       }
     })
-    // config.externals({
-    //   vue: 'vue',
-    //   vuex: 'vuex',
-    //   'vue-router': "'vue-router'",
-    //   'element-ui': "'element-ui'"
-    // })
     config.resolve.alias
       .set('@', resolve('src'))
       .set('assets', resolve('src/assets'))

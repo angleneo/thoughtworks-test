@@ -1,18 +1,23 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    VUEX-ADVANCE  【VUEX进阶】源码分析
-    <Stark msg="Welcome to Your Vue.js App" />
+    <div class="app-header">
+      <Header />
+    </div>
+    <div class="app-left">
+      <LeftMenu />
+    </div>
+    <router-view />
   </div>
 </template>
 
 <script>
-import Stark from './components/Stark.vue'
-
+import Header from 'components/header'
+import LeftMenu from 'components/left-menu'
 export default {
   name: 'App',
   components: {
-    Stark
+    Header,
+    LeftMenu
   }
 }
 </script>

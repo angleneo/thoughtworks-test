@@ -1,9 +1,25 @@
-## 教程文章
-[【vuejs cli3最佳实践系列】vuejs cli3 env配置文件实践指南](https://segmentfault.com/a/1190000019397747?_ea=14530521)
+# thoughtworks-test
 
-# vuejs-best-practice
- > 基于 vue cli3的脚手架，集成了vuex，request，自定义eslint等功能优化
-## 实现功能
+// 安装Vue Cli
+npm install -g @vue/cli
+
+// 安装依赖
+npm install
+
+// 运行开发环境
+npm run serve
+
+// 打包 - 测试环境
+// 详情参考环境变量
+npm run build:testing
+
+// 打包 - 生产环境
+npm run build
+
+// 运行你的测试
+npm run test
+
+# 功能：
 * env环境配置：本地开发 测试 预发布 生产环境
 * eslint 集成 vue/recommended ，规范了一些常用的规则
 * 代理，本地开发代理
