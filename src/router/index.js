@@ -9,13 +9,20 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'Agent',
       component: resolve => require(['@/views/home/index.vue'], resolve)
     },
     {
-      path: '/others',
-      name: 'others',
-      component: resolve => require(['@/views/others/index.vue'], resolve),
+      path: '/myCruise',
+      name: 'MY Cruise',
+      component: resolve => require(['@/views/my-cruise/index.vue'], resolve),
+      children: [
+      ]
+    },
+    {
+      path: '/help',
+      name: 'HELP',
+      component: resolve => require(['@/views/help/index.vue'], resolve),
       children: [
       ]
     }

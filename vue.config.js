@@ -6,15 +6,8 @@ function resolve(dir) {
 module.exports = {
   // lintOnSave: false,
   lintOnSave: process.env.NODE_ENV !== 'production',
-  css: {
-    modules: true,
-    loaderOptions: {
-      css: {
-        localIdentName: '[name]-[hash:base64:4]',
-        camelCase: 'only'
-      }
-    }
-  },
+  // css: {
+  // },
   devServer: {
     port: 8080,
     disableHostCheck: true,
@@ -30,7 +23,30 @@ module.exports = {
     }
   },
   chainWebpack: (config) => {
-    config.optimization.minimize(true);
+    config.optimization.minimize(true)
+    config.module
+      .rule('svg')
+      .exclude.add(resolve('src/assets/font'))
+      .end()
+    // 创建 icons 规则，设置文件夹包含我们的图标库文件夹目录
+    // config.module
+    //   .rule('icons')
+    //   .test(/\.svg$/)
+    //   .include.add(resolve('src/assets/fon'))
+    //   .end()
+    //   .use('svg-sprite-loader')
+    //   .loader('svg-sprite-loader')
+    //   .options({
+    //     symbolId: 'icon-[name]'
+    //   })
+    //   .end()
+    //   .use('svgo-loader')
+    //   .loader('svgo-loader')
+    //   .options({
+    //     plugins: [{ removeXMLNS: true }]
+    //   })
+    //   .end()
+
     config.optimization.splitChunks({
       cacheGroups: {
         vendors: {
@@ -53,5 +69,15 @@ module.exports = {
       .set('@', resolve('src'))
       .set('assets', resolve('src/assets'))
       .set('components', resolve('src/components'))
+  },
+  configureWebpack: {
+    module: {
+      rules: [
+        {
+          test: /\.svg$/,
+          loader: 'vue-svg-loader',
+        },
+      ],
+    }
   }
 }

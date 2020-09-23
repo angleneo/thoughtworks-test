@@ -1,5 +1,7 @@
 components/**/*.js
 components/**/*.jsx
+components/**/*.svg
+components/**/svg.vue
 components/*/__tests__/type.tsx
 !components/*/__tests__/**/*.js
 !components/*/demo/*

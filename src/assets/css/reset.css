@@ -1,0 +1,141 @@
+blockquote, body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, hr, input, legend, li, ol, p, pre, td, textarea, th, ul {
+    margin: 0;
+    padding: 0
+}
+
+body, button, input, select, textarea {
+    font: 12px/1.5 tahoma, arial, 'Hiragino Sans GB', \5b8b\4f53, sans-serif
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%
+}
+
+address, cite, dfn, var {
+    font-style: normal;
+}
+
+small {
+    font-size: 12px
+}
+
+ol, ul {
+    list-style: none
+}
+
+a {
+    color: none;
+    text-decoration: none
+}
+
+a:hover {
+    text-decoration: underline
+}
+
+legend {
+    color: #000
+}
+
+fieldset, img {
+    border: 0
+}
+
+button, input, select, textarea {
+    font-size: 100%
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+.lt {
+    float: left;
+}
+
+.rt {
+    float: right;
+}
+
+.clearfix::after {
+    display: block;
+    height: 0;
+    clear: both;
+    content: '';
+    visibility: hidden;
+}
+
+.clearfix {
+    zoom: 0;
+}
+
+.clear {
+    clear: both;
+}
+
+.click_active:active {
+    opacity: 0.5;
+}
+
+.click_active:hover {
+    cursor: pointer;
+}
+
+/* 以下是项目内通用css */
+
+.blue {
+    color: #00B4CF;
+}
+
+.box {
+    width: 100%;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    background: #ffffff;
+}
+
+button {
+    user-select: none;
+}
+
+.btn-normal {
+    width: 150px;
+    padding: 0 5px;
+    box-sizing: border-box;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #777777;
+    background: #f7f8fa;
+    border-radius: 4px;
+    user-select: none;
+}
+
+.btn {
+    width: 150px;
+    padding: 0 5px;
+    box-sizing: border-box;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #ffffff;
+    background: #0274B3;
+    border-radius: 4px;
+    user-select: none;
+}
+
+.btn, .btn-normal:hover {
+    cursor: pointer;
+}
+
+.btn, .btn-normal:active {
+    opacity: 0.8;
+}
+
+.page-height {
+    min-height: 430px;
+}

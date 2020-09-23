@@ -3,8 +3,13 @@
     <div class="app-header">
       <Header />
     </div>
-    <div class="app-left">
-      <LeftMenu />
+    <div class="content">
+      <div class="content-left-menu">
+        <LeftMenu />
+      </div>
+      <div class="content-main">
+        <span class="blue">content</span>
+      </div>
     </div>
     <router-view />
   </div>
@@ -22,13 +27,28 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 #app {
+  width: 100%;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-size: 14px;
+}
+.app-header {
+  width: 100%;
+}
+.content {
+  padding: 0 10%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background: #f3f3f3;
+  .content-left-menu {
+    width: 20%;
+    min-width: 250px;
+  }
+  .content-main {
+    width: 80%;
+  }
 }
 </style>
