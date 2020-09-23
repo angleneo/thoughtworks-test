@@ -4,14 +4,13 @@
       <Header />
     </div>
     <div class="content">
-      <div class="content-left-menu">
+      <aside class="content-left-menu">
         <LeftMenu />
-      </div>
+      </aside>
       <div class="content-main">
-        <span class="blue">content</span>
+        <router-view />
       </div>
     </div>
-    <router-view />
   </div>
 </template>
 
@@ -22,26 +21,42 @@ export default {
   name: 'App',
   components: {
     Header,
-    LeftMenu
-  }
+    LeftMenu,
+  },
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+html,
+body,
 #app {
   width: 100%;
+  height: 100%;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   font-size: 14px;
+  overflow: hidden;
+}
+#app {
+  position: relative;
 }
 .app-header {
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
 }
 .content {
+  z-index: 1;
+  position: absolute;
+  top: 70px;
+  left: 0;
   padding: 0 10%;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   width: 100%;
+  height: 100%;
   background: #f3f3f3;
   .content-left-menu {
     width: 20%;
@@ -49,6 +64,7 @@ export default {
   }
   .content-main {
     width: 80%;
+    
   }
 }
 </style>
