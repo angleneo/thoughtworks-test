@@ -3,18 +3,21 @@
     <div class="home-top">
       <div class="top-item"><DataCard /></div>
       <div class="top-item"><DataCard /></div>
-      <div class="top-item"><DataCard /></div>
+      <div class="top-item"><DataLabel /></div>
     </div>
-    <div class="filter-column"></div>
+    <div class="filter-column">
+    </div>
     <div class="servers-list"></div>
   </div>
 </template>
 
 <script>
 import DataCard from 'components/data-card'
+import DataLabel from 'components/data-label'
 export default {
   components: {
-    DataCard
+    DataCard,
+    DataLabel
   }
 }
 </script>
@@ -37,7 +40,7 @@ export default {
   }
   .filter-column {
     width:100%;
-    background: green;
+    background: #ffffff;
   }
   .servers-list {
     width: 100%;

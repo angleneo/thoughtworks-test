@@ -23,7 +23,7 @@ export default {
 .data-card-template {
   width: 100%;
   min-width: 210px;
-  min-height: 90px;
+  height: 140px;
   color: #ffffff;
   overflow: hidden;
   .card-type {
