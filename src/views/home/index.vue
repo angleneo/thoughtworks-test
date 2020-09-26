@@ -10,7 +10,7 @@
       <div class="filter-item-input"><SearchBox /></div>
       <div class="filter-item-input"><SearchAction /></div>
     </div>
-    <div class="servers-list"><ServersList /></div>
+    <div class="servers-list"><ServersList :serversData="serversData" /></div>
   </div>
 </template>
 
@@ -21,6 +21,7 @@ import SearchBar from 'components/search-bar'
 import SearchBox from 'components/search-box'
 import SearchAction from 'components/search-action'
 import ServersList from 'components/servers-list'
+import { getAentsData } from 'service/home'
 export default {
   components: {
     DataCard,
@@ -29,6 +30,23 @@ export default {
     SearchBox,
     SearchAction,
     ServersList
+  },
+  data(){
+    return {
+      serversData: []
+    }
+  },
+  mounted(){
+    this.getAents()
+  },
+  methods: {
+    getAents(){
+      getAentsData().then(res => {
+        if (res && res.status === 200) {
+          this.serversData = res.data || []
+        }
+      })
+    }
   }
 }
 </script>

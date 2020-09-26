@@ -12,8 +12,8 @@ module.exports = {
     port: 8080,
     disableHostCheck: true,
     proxy: {
-      '/v1': { // 代理api
-        target: 'http://localhost:3001/v1', // 服务器api地址-
+      '/api': { // 代理api
+        target: 'http://localhost:3001', // 服务器api地址-
         changeOrigin: true, // 是否跨域
         ws: true, // proxy websockets
         pathRewrite: { // 重写路径
@@ -69,6 +69,7 @@ module.exports = {
       .set('@', resolve('src'))
       .set('assets', resolve('src/assets'))
       .set('components', resolve('src/components'))
+      .set('service', resolve('src/service'))
   },
   configureWebpack: {
     module: {
