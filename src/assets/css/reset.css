@@ -109,23 +109,48 @@ button {
     height: 40px;
     line-height: 40px;
     text-align: center;
-    color: #777777;
+    color: #ffffff;
     background: #f7f8fa;
     border-radius: 4px;
     user-select: none;
 }
 
 .btn {
-    width: 150px;
     padding: 0 5px;
     box-sizing: border-box;
-    height: 40px;
-    line-height: 40px;
+    min-width: 30px;
+    height: 30px;
+    line-height: 30px;
     text-align: center;
     color: #ffffff;
-    background: #0274B3;
+    font-size: 14px;
+    background: #00b4cf;
     border-radius: 4px;
     user-select: none;
+}
+
+.btn:hover {
+    background: #01869a;
+}
+
+.btn-cancel {
+    padding: 0 10px;
+    box-sizing: border-box;
+    min-width: 40px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #2d4054;
+    font-size: 14px;
+    background: #efefef;
+    border-radius: 4px;
+    user-select: none;
+}
+
+.btn::before {
+    margin: 0 5px;
+    color: #ffffff;
+    font-size: 14px;
 }
 
 .btn, .btn-normal:hover {

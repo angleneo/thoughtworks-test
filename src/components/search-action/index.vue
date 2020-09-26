@@ -1,8 +1,8 @@
 <template>
   <div class="search-action-template">
     <div class="search-action-box">
-      <div :class="['icon-th-card search-action-box-item click_active', activeAction === 0 ? 'active':'']" @click="setAction(0)"></div>
-      <div :class="['icon-th-list search-action-box-item click_active', activeAction === 1 ? 'active': '']" @click="setAction(1)"></div>
+      <div :class="['icon-th-card search-action-box-item click_active', activeAction === 0 ? 'active':'']" @click="setActive(0)"></div>
+      <div :class="['icon-th-list search-action-box-item click_active', activeAction === 1 ? 'active': '']" @click="setActive(1)"></div>
     </div>
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
     }
   },
   methods: {
-    setAction(index){
+    setActive(index){
       this.activeAction = index
     }
   }

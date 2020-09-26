@@ -10,7 +10,7 @@
       <div class="filter-item-input"><SearchBox /></div>
       <div class="filter-item-input"><SearchAction /></div>
     </div>
-    <div class="servers-list"></div>
+    <div class="servers-list"><ServersList /></div>
   </div>
 </template>
 
@@ -20,13 +20,15 @@ import DataLabel from 'components/data-label'
 import SearchBar from 'components/search-bar'
 import SearchBox from 'components/search-box'
 import SearchAction from 'components/search-action'
+import ServersList from 'components/servers-list'
 export default {
   components: {
     DataCard,
     DataLabel,
     SearchBar,
     SearchBox,
-    SearchAction
+    SearchAction,
+    ServersList
   }
 }
 </script>
