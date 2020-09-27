@@ -8,7 +8,7 @@
         <LeftMenu />
       </aside>
       <div class="content-main">
-        <router-view />
+        <router-view ref="router" />
       </div>
     </div>
   </div>
@@ -23,6 +23,8 @@ export default {
     Header,
     LeftMenu,
   },
+  methods: {
+  }
 }
 </script>
 
@@ -34,10 +36,10 @@ body,
   height: 100%;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   font-size: 14px;
-  overflow: hidden;
 }
 #app {
   position: relative;
+  overflow: hidden;
 }
 .app-header {
   z-index: 1000;
@@ -64,7 +66,6 @@ body,
   }
   .content-main {
     width: 80%;
-    
   }
 }
 </style>

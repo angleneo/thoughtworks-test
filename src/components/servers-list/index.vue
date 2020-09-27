@@ -1,7 +1,11 @@
 <template>
   <div class="servers-list-template">
     <ul>
-      <li class="servers-list-item" v-for="(item, index) in dataList" :key="index">
+      <li
+        v-for="(item, index) in dataList"
+        :key="index"
+        class="servers-list-item"
+      >
         <div class="item-logo">
           <img src="../../assets/images/windows.png" alt="server-logo" />
         </div>
@@ -20,10 +24,20 @@
             </div>
           </div>
           <div class="item-info-buttom flex-align-center flex-wrap-center">
-            <div class="btn"><i class="icon-plus"></i></div>
             <div class="keyword-list">
+              <div
+                :id="item.name"
+                class="btn"
+                @click="addTags(item.name, index)"
+              >
+                <i class="icon-plus"></i>
+              </div>
               <ul>
-                <li class="keyword-item" v-for="(keyword, int) in item.resources" :key="int">
+                <li
+                  v-for="(keyword, int) in item.resources"
+                  :key="int"
+                  class="keyword-item"
+                >
                   <div class="btn-cancel">
                     {{ keyword }}<i class="icon-trash click_active"></i>
                   </div>
@@ -35,11 +49,22 @@
         </div>
       </li>
     </ul>
+    <Dialog
+      v-show="dialogVisible"
+      id="dialog"
+      ref="dialog"
+      @on-closed="dialogVisible = false"
+      @get-keywords="getKeywords"
+    />
   </div>
 </template>
 
 <script>
+import Dialog from 'components/dialog'
 export default {
+  components: {
+    Dialog
+  },
   props: {
     serversData: {
       type: Array,
@@ -48,27 +73,61 @@ export default {
       }
     }
   },
-  data(){
+  data() {
     return {
-      dataList: []
+      dataList: [],
+      dialogVisible: false,
+      activeClick: null
     }
   },
   watch: {
     serversData: {
-      handler: function(val, oldVal){
+      handler: function(val, oldVal) {
         if (val !== oldVal) {
           this.dataList = this.serversData
-          console.log(this.dataList)
         }
       },
       deep: true,
       immediate: true
+    }
+  },
+  mounted() {
+  },
+  methods: {
+    addTags(id, index) {
+      let obj = document.getElementById(id)
+      let t = obj.getBoundingClientRect().top //获取元素距离页面上边的距离
+      let l = obj.getBoundingClientRect().left //获取元素距离页面左边的距离
+      let sh = document.documentElement.scrollTop //网页滚动条滚动的高度
+
+      // let height = obj.offsetHeight; //获取元素高度
+
+      //设置弹框位置
+      dialog.style.left = l + 'px'
+      dialog.style.top = t + sh - 40 + 'px'
+      this.dialogVisible = true
+      this.activeClick = index
+    },
+    getKeywords(val) {
+      if (val.length === 0) {
+        return
+      }
+      for (let i = 0;i < val.length;i++) {
+        this.dataList[this.activeClick].resources.push(val[i].trim())
+      }
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+#dialog {
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #ffffff;
+}
 .idle {
   padding: 2px 10px;
   box-sizing: border-box;
@@ -95,6 +154,7 @@ export default {
   ul > .servers-list-item {
     padding: 15px;
     box-sizing: border-box;
+    margin: 15px 0;
     display: flex;
     justify-content: flex-start;
     width: 100%;
@@ -116,6 +176,7 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      color: #2d4054;
       // width:100%;
       .item-info-top {
         width: 100%;
@@ -136,7 +197,10 @@ export default {
       .item-info-buttom {
         width: 100%;
         .btn {
+          display: inline-block;
+          margin: 5px 5px 5px 0;
           i {
+            margin-top: -2px;
             display: inline-block;
             width: 20px;
             height: 20px;
@@ -144,19 +208,25 @@ export default {
             text-align: center;
             vertical-align: middle;
           }
+          .icon-deny {
+            margin: -3px 3px 0 0;
+          }
         }
         .keyword-list {
           width: 80%;
+          display: flex;
+          justify-content: flex-start;
+          flex-wrap: wrap;
           ul {
-            width: 100%;
             display: flex;
             justify-content: flex-start;
             flex-wrap: wrap;
           }
           .keyword-item {
-            margin: 0 5px;
+            margin: 5px;
             .btn-cancel {
               i {
+                margin-top: -2.5px;
                 display: inline-block;
                 width: 20px;
                 height: 20px;

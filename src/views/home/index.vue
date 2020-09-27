@@ -10,7 +10,7 @@
       <div class="filter-item-input"><SearchBox /></div>
       <div class="filter-item-input"><SearchAction /></div>
     </div>
-    <div class="servers-list"><ServersList :serversData="serversData" /></div>
+    <div class="servers-list"><ServersList ref="servers" :serversData="serversData" /></div>
   </div>
 </template>
 
@@ -31,16 +31,16 @@ export default {
     SearchAction,
     ServersList
   },
-  data(){
+  data() {
     return {
       serversData: []
     }
   },
-  mounted(){
+  mounted() {
     this.getAents()
   },
   methods: {
-    getAents(){
+    getAents() {
       getAentsData().then(res => {
         if (res && res.status === 200) {
           this.serversData = res.data || []
@@ -57,6 +57,7 @@ export default {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
+  overflow-y: auto;
   .home-top {
     width: 100%;
     display: flex;
@@ -93,7 +94,6 @@ export default {
   }
   .servers-list {
     width: 100%;
-    background: pink;
   }
 }
 </style>
