@@ -5,6 +5,7 @@ function resolve(dir) {
 }
 module.exports = {
   // lintOnSave: false,
+  publicPath: './',
   lintOnSave: process.env.NODE_ENV !== 'production',
   // css: {
   // },

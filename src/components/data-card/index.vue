@@ -1,9 +1,9 @@
 <template>
   <div class="data-card-template">
-    <div :class="cardType === 'build'? 'build':'Idle'">
-      <span :class="cardType === 'build'? 'icon-cog':'icon-coffee'"></span>
-      <div class="card-type">{{ cardType === 'build' ? 'Building':'Idle' }}</div>
-      <div class="card-data">3</div>
+    <div :class="type === 'building'? 'build':'Idle'">
+      <span :class="type === 'building'? 'icon-cog':'icon-coffee'"></span>
+      <div class="card-type">{{ type === 'building' ? 'Building':'Idle' }}</div>
+      <div class="card-data">{{ num }}</div>
     </div>
   </div>
 </template>
@@ -11,9 +11,13 @@
 <script>
 export default {
     props: {
-        cardType: {
+        type: {
             type: String,
-            default: 'Idle'
+            default: 'idle'
+        },
+        num: {
+          type: Number,
+          default: 0
         }
     }
 }

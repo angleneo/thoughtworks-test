@@ -8,10 +8,7 @@
     "start": "vue-cli-service serve",
     "serve": "vue-cli-service serve --mode dev",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "unit": "cross-env BABEL_ENV=test karma start test/karma.conf.js",
-    "codecov": "codecov",
-    "test": "npm run unit && npm run codecov"
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "axios": "^0.18.1",

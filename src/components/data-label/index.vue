@@ -2,15 +2,15 @@
   <div class="data-label-template">
     <div class="data-item">
       <div class="item-label">ALL</div>
-      <div class="item-count">8</div>
+      <div class="item-count">{{ dataInfo.all }}</div>
     </div>
     <div class="data-item">
       <div class="item-label">PHYSICAL</div>
-      <div class="item-count">4</div>
+      <div class="item-count">{{ dataInfo.physical }}</div>
     </div>
     <div class="data-item">
       <div class="item-label">VIRTUAL</div>
-      <div class="item-count">4</div>
+      <div class="item-count">{{ dataInfo.virtual }}</div>
     </div>
   </div>
 </template>
@@ -18,6 +18,32 @@
 <script>
 export default {
   props: {
+    dataLabel: {
+      type: Object,
+      default: function() {
+        return {}
+      }
+    }
+  },
+  data() {
+    return {
+      dataInfo: {
+        all: 0,
+        physical: 0,
+        virtual: 0
+      }
+    }
+  },
+  watch: {
+    dataLabel: {
+      handler: function(val, oldVal) {
+        if (val !== oldVal) {
+          this.dataInfo = JSON.parse(JSON.stringify(this.dataLabel))
+        }
+      },
+      deep: true,
+      immediate: true
+    }
   }
 }
 </script>

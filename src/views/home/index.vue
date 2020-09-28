@@ -1,9 +1,11 @@
 <template>
   <div class="home-template">
     <div class="home-top">
-      <div class="top-item"><DataCard /></div>
-      <div class="top-item"><DataCard /></div>
-      <div class="top-item"><DataLabel /></div>
+      <div class="top-item">
+        <DataCard :type="'building'" :num="buildLength" />
+      </div>
+      <div class="top-item"><DataCard :type="'idle'" :num="idleLength" /></div>
+      <div class="top-item"><DataLabel :dataLabel="dataLabel" /></div>
     </div>
     <div class="filter-column">
       <div class="filter-item-bar"><SearchBar /></div>
@@ -38,7 +40,10 @@ export default {
   data() {
     return {
       initData: [], // 存储初始data
-      serversData: []
+      serversData: [],
+      buildLength: 0,
+      idleLength: 0,
+      dataLabel: {}
     }
   },
   mounted() {
@@ -50,6 +55,27 @@ export default {
         if (res && res.status === 200) {
           this.serversData = res.data || []
           this.initData = res.data || []
+          let phy = 0, vir = 0
+          let len = this.initData.length
+          for (let i = 0;i < len;i++) {
+            if (this.initData[i].status === 'idle') {
+              this.idleLength++
+            }
+            if (this.initData[i].status === 'building') {
+              this.buildLength++
+            }
+            if (this.initData[i].type === 'physical') {
+              phy++
+            }
+            if (this.initData[i].type === 'virtual') {
+              vir++
+            }
+          }
+          this.dataLabel = {
+            all: this.initData.length,
+            physical: phy,
+            virtual: vir
+          }
         }
       })
     },
@@ -58,7 +84,7 @@ export default {
       let arr = this.initData
       this.serversData = []
       let reg = new RegExp(val)
-      for (let i = 0; i < len; i++) {
+      for (let i = 0;i < len;i++) {
         //如果字符串中不包含目标字符会返回-1
         if (arr[i].name && arr[i].name.match(reg)) {
           this.serversData.push(arr[i])
