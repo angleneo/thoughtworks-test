@@ -29,11 +29,9 @@ export default {
   },
   methods: {
     addKeyword() {
-      let str = this.keyword.replace('[\,a-zA-Z1-9]', '')
-      // let arr = this.keyword.replace('[a-zA-Z1-9\,]', this.keyword).split(',')
-      console.log(str)
-      // this.$emit('get-keywords', arr)
-      // this.onClosed()
+      let arr = this.keyword.split(',')
+      this.$emit('get-keywords', arr)
+      this.onClosed()
     },
     onClosed() {
       this.keyword = ''

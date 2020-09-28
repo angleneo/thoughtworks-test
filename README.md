@@ -1,23 +1,14 @@
-# thoughtworks-test
+# thoughtworks-test 需要跑mock-server来体验实际效果！
 
-// 安装Vue Cli
-npm install -g @vue/cli
-
-// 安装依赖
+#  安装依赖
 npm install
 
-// 运行开发环境
+#  运行开发环境
 npm run serve
 
-// 打包 - 测试环境
-// 详情参考环境变量
-npm run build:testing
-
-// 打包 - 生产环境
+#  打包 - 生产环境
 npm run build
 
-// 运行你的测试
-npm run test
 
 # 功能：
 * env环境配置：本地开发 测试 预发布 生产环境
@@ -31,3 +22,4 @@ npm run test
 * .npmrc 设置国内镜像
 * 集成 polyfill 配置，兼容低版本浏览器
 * 自动发版： npm run tag
+* 页面常规增删查功能

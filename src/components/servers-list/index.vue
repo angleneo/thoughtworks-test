@@ -7,7 +7,7 @@
         class="servers-list-item"
       >
         <div class="item-logo">
-          <img src="../../assets/images/windows.png" alt="server-logo" />
+          <img :src="getLogoType(item.os)" alt="server-logo" />
         </div>
         <div class="item-info">
           <div class="item-info-top flex-wrap-center">
@@ -39,7 +39,7 @@
                   class="keyword-item"
                 >
                   <div class="btn-cancel">
-                    {{ keyword }}<i class="icon-trash click_active"></i>
+                    {{ keyword }}<i class="icon-trash click_active" @click="removeKeyword(keyword, int, index)"></i>
                   </div>
                 </li>
               </ul>
@@ -61,6 +61,12 @@
 
 <script>
 import Dialog from 'components/dialog'
+import windows from 'assets/images/windows.png'
+import centos from 'assets/images/cent_os.png'
+import ubuntu from 'assets/images/ubuntu.png'
+import debian from 'assets/images/debin.png'
+import suse from 'assets/images/suse.png'
+
 export default {
   components: {
     Dialog
@@ -94,6 +100,22 @@ export default {
   mounted() {
   },
   methods: {
+    getLogoType(type) {
+      switch(type){
+        case 'windows':
+          return windows
+        case 'centos':
+          return centos
+        case 'ubuntu':
+          return ubuntu
+        case 'debian':
+          return debian
+        case 'suse':
+          return suse
+        default:
+          return windows
+      }
+    },
     addTags(id, index) {
       let obj = document.getElementById(id)
       let t = obj.getBoundingClientRect().top //获取元素距离页面上边的距离
@@ -114,6 +136,11 @@ export default {
       }
       for (let i = 0;i < val.length;i++) {
         this.dataList[this.activeClick].resources.push(val[i].trim())
+      }
+    },
+    removeKeyword(keyword, int, index) {
+      if (this.dataList[index].resources.includes(keyword)) {
+        this.dataList[index].resources.splice(int, 1)
       }
     }
   }

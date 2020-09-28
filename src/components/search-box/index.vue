@@ -1,7 +1,7 @@
 <template>
   <div class="search-box-template">
     <div class="search-input">
-      <input v-model="keyword" type="text" />
+      <input v-model="keyword" type="text" placeholder="enter name for search" />
       <i class="icon-search"></i>
     </div>
   </div>
@@ -11,7 +11,21 @@
 export default {
   data() {
     return {
+      timer: null,
       keyword: ''
+    }
+  },
+  watch: {
+    keyword: {
+      handler: function(val, oldVal) {
+        if (val !== oldVal) {
+          clearTimeout(this.timer)
+          this.timer = setTimeout(() => {
+            this.$emit('getKeyword', val)
+          }, 300)
+        }
+      },
+      deep: true
     }
   }
 }

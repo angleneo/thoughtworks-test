@@ -7,10 +7,14 @@
     </div>
     <div class="filter-column">
       <div class="filter-item-bar"><SearchBar /></div>
-      <div class="filter-item-input"><SearchBox /></div>
+      <div class="filter-item-input">
+        <SearchBox @getKeyword="getKeywodForList" />
+      </div>
       <div class="filter-item-input"><SearchAction /></div>
     </div>
-    <div class="servers-list"><ServersList ref="servers" :serversData="serversData" /></div>
+    <div class="servers-list">
+      <ServersList ref="servers" :serversData="serversData" />
+    </div>
   </div>
 </template>
 
@@ -33,6 +37,7 @@ export default {
   },
   data() {
     return {
+      initData: [], // 存储初始data
       serversData: []
     }
   },
@@ -44,8 +49,21 @@ export default {
       getAentsData().then(res => {
         if (res && res.status === 200) {
           this.serversData = res.data || []
+          this.initData = res.data || []
         }
       })
+    },
+    getKeywodForList(val) {
+      let len = this.initData.length
+      let arr = this.initData
+      this.serversData = []
+      let reg = new RegExp(val)
+      for (let i = 0; i < len; i++) {
+        //如果字符串中不包含目标字符会返回-1
+        if (arr[i].name && arr[i].name.match(reg)) {
+          this.serversData.push(arr[i])
+        }
+      }
     }
   }
 }
